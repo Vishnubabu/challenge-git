@@ -7,6 +7,7 @@ const server = http.createServer((req, res) => {
   if (req.url === '/user-agent') return respondUserAgent(req, res)
   if (req.url.match(/^\/b64\//)) return respondBase64(req, res)
 
+  res.writeHead(404)
   res.end()
 })
 

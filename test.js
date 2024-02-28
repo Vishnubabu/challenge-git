@@ -34,6 +34,15 @@ tape('should respond b64', (t) => {
   })
 })
 
+tape('should handle 404', (t) => {
+  jsonist.get(`${urlBase}/any`, (err, body, response) => {
+    if (err) t.error(err)
+
+    t.equal(response.statusCode, 404)
+    t.end()
+  })
+})
+
 tape('cleanup', function (t) {
   server.close()
   t.end()
